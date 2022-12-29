@@ -1,0 +1,22 @@
+{
+  "name": "prodomo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HowePersonal/prodomo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HowePersonal/prodomo/issues"
+  },
+  "homepage": "https://github.com/HowePersonal/prodomo#readme",
+  "devDependencies": {
+    "webpack-cli": "^5.0.1"
+  }
+}
