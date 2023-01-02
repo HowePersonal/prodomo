@@ -9,7 +9,18 @@ import './styles/home.css'
 
 let body = document.body;
 
+let contentDiv = document.createElement('div');
+contentDiv.id = 'contentDiv';
+
+body.appendChild(contentDiv);
+
 loadHeader()
-loadTab()
-loadHome()
+
+let [timerTab, historyTab, optionTab] = loadTab()
+
+let homeDiv = loadHome();
+
+timerTab.addEventListener('click', function() {
+    document.getElementById('contentDiv').appendChild(homeDiv);
+})
 

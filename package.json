@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/HowePersonal/prodomo#readme",
   "devDependencies": {
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
     "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "webpack": "^5.75.0"
   }
 }

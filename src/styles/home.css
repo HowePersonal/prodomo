@@ -8,7 +8,6 @@
     grid-template-rows: 0.3fr 0.5fr 0.3fr 1fr 2fr;
     justify-items: center;
     background-color: #e27d60;
-
     border-radius: 20px;
 }
 
@@ -45,6 +44,10 @@
     font-size: 20px;
     font-weight: bold;
     border-radius: 5px;
+}
+
+#timerButtons button:hover {
+    color: white;
 }
 
 #timerHour {
