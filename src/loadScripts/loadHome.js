@@ -1,9 +1,6 @@
 import { displayTimer } from "../scripts/timer";
-import timer from "../scripts/timer.js";
 
-export default function loadHome() {
-    let customTimer = timer(0.1);
-
+export default function loadHome(customTimer) {
     let [homeDiv, timerDiv, timerButtons] = createContainers();
 
     createButtons(customTimer, timerButtons);

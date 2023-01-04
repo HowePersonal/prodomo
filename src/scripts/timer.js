@@ -1,7 +1,11 @@
+import history from '../loadScripts/loadHistory.js';
 
 export default function timer(duration) {
     let totalDuration = duration*60;
     let currentDuration = duration*60;
+    let elapsedTime = 0;
+    let today = new Date()
+    let todayFormatted = today.getFullYear() + '-' + today.getMonth() + '-' + today.getDate().toString().padStart(2, '0')
     let timeout;
 
     function getTotalDur() {
@@ -14,6 +18,7 @@ export default function timer(duration) {
 
     function subtractCurrentDur() {
         currentDuration -= 1;
+        elapsedTime += 1;
     }
 
     function init(timerDiv) {
@@ -35,6 +40,7 @@ export default function timer(duration) {
         if (currentDuration == 0) {
             this.pause();
             displayTimer(this);
+            saveTime();
         }
         else {
             this.expected += this.interval
@@ -43,9 +49,20 @@ export default function timer(duration) {
     }
 
     function countdown() {
+        
+        if (localStorage.getItem(todayFormatted) === null) {
+            localStorage.setItem(todayFormatted, '0');
+        }
+
         this.interval = 1000;
         this.expected = Date.now() + this.interval;
         this.timeout = setTimeout(() => this.step(), this.interval)
+    }
+
+    function saveTime() {
+        let currentSavedTime = localStorage.getItem(todayFormatted)
+        localStorage.setItem(todayFormatted, parseInt(currentSavedTime) + elapsedTime);
+        elapsedTime = 0;
     }
 
     function pause() {
@@ -62,6 +79,7 @@ export default function timer(duration) {
         getTotalDur,
         getCurrentDur,
         subtractCurrentDur,
+        saveTime,
         step,
         init,
         countdown,
