@@ -22,6 +22,9 @@ export default function timer(duration) {
     }
 
     function init(timerDiv) {
+        if (localStorage.getItem(todayFormatted) === null) {
+            localStorage.setItem(todayFormatted, '0');
+        }
         this.hourText = timerDiv.querySelector('#timerHour');
         this.minText = timerDiv.querySelector('#timerMin');
         this.secText = timerDiv.querySelector('#timerSec');
@@ -49,11 +52,6 @@ export default function timer(duration) {
     }
 
     function countdown() {
-        
-        if (localStorage.getItem(todayFormatted) === null) {
-            localStorage.setItem(todayFormatted, '0');
-        }
-
         this.interval = 1000;
         this.expected = Date.now() + this.interval;
         this.timeout = setTimeout(() => this.step(), this.interval)
@@ -74,12 +72,20 @@ export default function timer(duration) {
         currentDuration = totalDuration;
         displayTimer(this)
     }
+ 
+    function setNewTime(duration) {
+        totalDuration = duration*60;
+        currentDuration = duration*60;
+        this.reset();
+        displayTimer(this);
+    }
 
     return {
         getTotalDur,
         getCurrentDur,
         subtractCurrentDur,
         saveTime,
+        setNewTime,
         step,
         init,
         countdown,

@@ -2,16 +2,48 @@ import { displayTimer } from "../scripts/timer";
 
 export default function loadHome(customTimer) {
     let [homeDiv, timerDiv, timerButtons] = createContainers();
+    let timeOptionsDiv = createTimeOptions(customTimer);
 
     createButtons(customTimer, timerButtons);
     createTimerText(timerDiv);
 
-    customTimer.init(timerDiv)
+    customTimer.init(timerDiv);
 
-    homeDiv.appendChild(timerDiv)
-    homeDiv.appendChild(timerButtons)
+    homeDiv.appendChild(timeOptionsDiv);
+    homeDiv.appendChild(timerDiv);
+    homeDiv.appendChild(timerButtons);
 
     return homeDiv
+}
+
+function createTimeOptions(customTimer) {
+    let timeOptionsDiv = document.createElement('div');
+
+    timeOptionsDiv.id = 'timeOptionsDiv'
+
+    let option15 = document.createElement('button');
+    let option25 = document.createElement('button');
+    let option45 = document.createElement('button');
+    let option60 = document.createElement('button');
+
+    option15.innerText = '15';
+    option25.innerText = '25';
+    option45.innerText = '45';
+    option60.innerText = '60';
+
+    option15.value = '15';
+    option25.value = '25';
+    option45.value = '45';
+    option60.value = '60';
+
+    linkChangeTime(customTimer, option15, option25, option45, option60);
+
+    timeOptionsDiv.appendChild(option15);
+    timeOptionsDiv.appendChild(option25);
+    timeOptionsDiv.appendChild(option45);
+    timeOptionsDiv.appendChild(option60);
+
+    return timeOptionsDiv;
 }
 
 function createContainers() {
@@ -53,6 +85,24 @@ function createButtons(customTimer, timerButtons) {
     timerButtons.appendChild(startTimer)
     timerButtons.appendChild(pauseTimer)
     timerButtons.appendChild(resetTimer)
+}
+
+function linkChangeTime(customTimer, option15, option25, option45, option60) {
+    option15.addEventListener('click', function() {
+        customTimer.setNewTime(15);
+    })
+
+    option25.addEventListener('click', function() {
+        customTimer.setNewTime(25);
+    })
+
+    option45.addEventListener('click', function() {
+        customTimer.setNewTime(45);
+    })
+
+    option60.addEventListener('click', function() {
+        customTimer.setNewTime(60);
+    })
 }
 
 function linkTimers(customTimer, startTimer, pauseTimer, resetTimer) {

@@ -4,8 +4,23 @@
     background-color: #e27d60;
 
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 0.3fr 0.5fr 0.3fr 1fr 2fr;
+    grid-template-rows: 1fr 4fr 4fr;
 
     border-radius: 20px;
+}
+
+#timeDiv {
+    grid-row: 2/3;
+    text-align: center;
+}
+
+#dayDisplay {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#timeDisplay {
+    color: lightgray;
+    font-size: 20px;
 }
